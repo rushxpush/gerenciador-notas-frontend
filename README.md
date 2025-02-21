@@ -41,7 +41,7 @@ docker compose up --build
 
 3. Não esqueça de montar a imagem do backend e rodar. Link: [gerenciador-notas-backend](https://github.com/rushxpush/gerenciador-notas-backend)
 
-4. Acesse a página em [localhost:8080](http://localhost:8080)
+4. Acesse a página em [localhost:8085](http://localhost:8085)
 
 [Ir para o topo](#gerenciador-de-notas---frontend)
 
