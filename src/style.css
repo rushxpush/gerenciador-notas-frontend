@@ -11,6 +11,8 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --border-radius: 5px;
 }
 
 a {
@@ -25,18 +27,19 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  place-items: center;
+  box-sizing: border-box;
+  /* place-items: center;
   min-width: 320px;
-  min-height: 100vh;
+  min-height: 100vh; */
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: 2em;
   line-height: 1.1;
 }
 
 button {
-  border-radius: 8px;
+  border-radius: var(--border-radius);
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
@@ -63,6 +66,59 @@ button:focus-visible {
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  margin-top: 100px;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  font-size: 26px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+input {
+  padding: 10px;
+  border-radius: var(--border-radius);
+  border: none;
+  box-sizing: border-box;
+}
+
+table {
+  /* border: 3px solid black; */
+  position: relative;
+  width: 100%;
+  background-color: black;
+  border-spacing: 1px;
+}
+
+
+th, td {
+  background-color: gray;
+  padding: 10px;
+}
+
+th {
+  background-color: #1a1a1a;
+}
+
+.table-container {
+  display: flex;
+  position: relative;
+  /* border: 1px solid black; */
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.card {
+  display: flex;
+  /* background-color: white; */
+  border: 1px solid #646cff;
+  border-radius: var(--border-radius);
+  padding: 20px;
 }
 
 @media (prefers-color-scheme: light) {

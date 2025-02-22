@@ -6,7 +6,8 @@
 
 <ul>
   <li>Vue</li>
-  <li>Pinia</li>
+  <li>Axios</li>
+  <!-- <li>Pinia</li> -->
   <li>Oh, Vue Icons!</li>
   <li>Vue Router</li>
 </ul>
@@ -69,7 +70,7 @@ Qualquer dúvida mande um email para [rafagarciadev@gmail.com](mailto:rafagarcia
 
 ## Lista de bugs
 
-- &#x2610; Acessar qualquer link que não seja http://localhost:8080 na barra de navegação gera um erro de página não encontrada (falta configurar o servidor para dar suporte ao Vue Router)
+- &#x2610; Acessar qualquer link que não seja http://localhost:8085 na barra de navegação gera um erro de página não encontrada (falta configurar o servidor para dar suporte ao Vue Router)
 
 [Ir para o topo](#gerenciador-de-notas---frontend)
 
