@@ -1,19 +1,24 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import Input from './ui/Input.vue';
-import { useNotes } from '../composables/useNotes';
+import { useNotesStore } from '../stores/notesStore';
 
-const { postNote } = useNotes();
+const { postNote } = useNotesStore();
 
 const title = ref('');
 const content = ref('');
 
 const handleCreateNote = async () => {
-  const responsePostNote = await postNote({
-    title: title.value,
-    content: content.value
-  })
-  console.log('responsePostNote: ', responsePostNote)
+  if (!title.value) {
+    console.log('required')
+  }
+  else {
+    const responsePostNote = await postNote({
+      title: title.value,
+      content: content.value
+    })
+    console.log('responsePostNote: ', responsePostNote)
+  }
 }
 
 </script>

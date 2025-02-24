@@ -1,13 +1,13 @@
 # Gerenciador de Notas - Frontend
 
-[Tecnologias](#tecnologias) | [Funcionalidades](#funcionalidades) | [Descrição](#descrição) | [Instalação](#instalação) | [Avisos](#avisos) | [Imagens](#imagens) | [Suporte](#suporte) | [Lista de bugs](#lista-de-bugs) | [Bugs Resolvidos](#bugs-resolvidos)
+[Tecnologias](#tecnologias) | [Funcionalidades](#funcionalidades) | [Descrição](#descrição) | [Instalação](#instalação) | [Avisos](#avisos) | [Imagens](#imagens) | [Suporte](#suporte) | [Todo](#todo) | [Lista de bugs](#lista-de-bugs) | [Bugs Resolvidos](#bugs-resolvidos)
 
 ## Tecnologias
 
 <ul>
   <li>Vue</li>
   <li>Axios</li>
-  <!-- <li>Pinia</li> -->
+  <li>Pinia</li>
   <li>Oh, Vue Icons!</li>
   <li>Vue Router</li>
 </ul>
@@ -16,8 +16,6 @@
 
 ## Funcionalidades
 
-- &check; 
-- &#x2610; 
 
 
 [Ir para o topo](#gerenciador-de-notas---frontend)
@@ -67,6 +65,25 @@ Futuros avisos
 Qualquer dúvida mande um email para [rafagarciadev@gmail.com](mailto:rafagarciadev@gmail.com)
 
 [Ir para o topo](#gerenciador-de-notas---frontend)
+
+## Todo 
+
+- &check; Componente ui Input.vue
+- &check; Componente ui Navbar.vue
+- &check; View de Criação de Notas (HomeView.vue)
+- &check; View de Visualização de Notas criadas (NotesListView.vue)
+- &check; Componente de Criação de Notas (CreateNoteForm.vue)
+- &check; Componente de Visualização de Notas (NotesList.vue)
+- &check; Setup do router (router.ts)
+- &check; API para interação com rota /notes (notesAPI.ts)
+- &check; Composable para encapsulamento das funções de notesAPI (useNotes.ts)
+- &#x2610; Teste unitário CreateNoteForm.vue
+- &#x2610; Teste unitário NotesListView.vue
+- &#x2610; Teste unitário Input.vue
+- &#x2610; Teste unitário api/notesAPI.ts
+- &#x2610; Teste unitário  composables/useNotes.ts
+<!-- - &check;  -->
+<!-- - &#x2610;  -->
 
 ## Lista de bugs
 

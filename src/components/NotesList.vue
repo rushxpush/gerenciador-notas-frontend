@@ -1,7 +1,13 @@
 <script setup lang="ts">
-import { useNotes } from '../composables/useNotes';
+import { onMounted } from 'vue';
+import { useNotesStore } from '../stores/notesStore';
 
-const { notes } = useNotes();
+const notesStore = useNotesStore();
+
+onMounted(() => {
+  notesStore.fetchNotes()
+});
+
 </script>
 
 <template>
@@ -15,7 +21,7 @@ const { notes } = useNotes();
       </thead>
 
       <tbody>
-        <tr v-for="note in notes">
+        <tr v-for="note in notesStore.notes">
           <td>{{ note.title }}</td>
           <td>{{ note.content }}</td>
         </tr>

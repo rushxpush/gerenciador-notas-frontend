@@ -12,11 +12,7 @@
 
 <style scoped>
 .navbar-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 20px;
+  padding: 10px;
   background-color: rgb(59, 59, 59);
 }
 </style>

@@ -5,8 +5,6 @@ import type { CreateNote, Note, ResponseError } from "../types/api";
 
 const route: string = '/notes';
 
-
-
 export const createNote = async (data: CreateNote): Promise<Note | ResponseError> => {
   try {
     const response: AxiosResponse<Note> = await api.post(route, data);
