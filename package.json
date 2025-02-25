@@ -24,6 +24,8 @@
     "@vitest/ui": "^3.0.7",
     "@vue/test-utils": "^2.4.6",
     "@vue/tsconfig": "^0.7.0",
+    "axios-mock-adapter": "^2.1.0",
+    "msw": "^2.7.3",
     "typescript": "~5.7.2",
     "vite": "^6.1.0",
     "vitest": "^3.0.7",

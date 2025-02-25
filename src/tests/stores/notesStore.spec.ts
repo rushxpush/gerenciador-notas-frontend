@@ -10,9 +10,15 @@ const mockNotes: Note = {  _id: '1', __v: 0, title: 'Note 1', content: 'Content 
 const mockNote: Note = { _id: '1', __v: 0, title: 'New Note', content: 'New Content' }
 const mockError: ResponseError = { error: 'Something went wrong', message: 'Cannot POST/notes', status: 500 }
 
-describe('notesStore', () => {
+describe('Notes Store', () => {
+
+  let notesStore: ReturnType<typeof useNotesStore>;
+  let statusStore: ReturnType<typeof useStatusStore>;
+
   beforeEach(() => {
     setActivePinia(createPinia())
+    notesStore = useNotesStore()
+    statusStore = useStatusStore()
   })
 
   afterEach(() => {
@@ -20,9 +26,6 @@ describe('notesStore', () => {
   })
 
   it('fetchNotes should call getAllNotes and update state', async () => {
-    const notesStore = useNotesStore()
-    const statusStore = useStatusStore()
-
     vi.spyOn(statusStore, 'setLoading')
     vi.spyOn(statusStore, 'addMessage')
 
@@ -37,9 +40,6 @@ describe('notesStore', () => {
   })
 
   it('postNote should call createNote and update notes on success', async () => {
-    const notesStore = useNotesStore()
-    const statusStore = useStatusStore()
-
     vi.spyOn(statusStore, 'setLoading')
     vi.spyOn(statusStore, 'addMessage')
 
@@ -54,9 +54,6 @@ describe('notesStore', () => {
   })
 
   it('postNote should handle error response if backend is unavailable', async () => {
-    const notesStore = useNotesStore()
-    const statusStore = useStatusStore()
-
     vi.spyOn(statusStore, 'setLoading')
     vi.spyOn(statusStore, 'addMessage')
 

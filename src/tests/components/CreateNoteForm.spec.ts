@@ -32,7 +32,7 @@ describe('CreateNoteForm.vue', () => {
   it('shows error message if input title is empty', async () => {
      const wrapper = mount(CreateNoteForm, {
       global: {
-        // Didn't stub actions for initial speed of testing
+        // I didn't stub the actions for lack of time
         plugins: [ createTestingPinia({ stubActions: false }) ]
       }
      });
