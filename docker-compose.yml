@@ -4,3 +4,9 @@ services:
     ports:
       - "8085:80"
     restart: always
+  
+  frontend-test:
+    build:
+      context: .
+      target: build-stage
+    command: npm test
