@@ -8,7 +8,7 @@ export const useNotesStore = defineStore('notes', () => {
   const statusStore = useStatusStore();
   const notes: Ref = ref([]);
   const isLoadingNotes: Ref<boolean> = ref(false);
-  const errorNotes = ref();
+  const errorNotes: Ref<string> = ref('');
   const hasFetchedNotes = ref(false);
 
 

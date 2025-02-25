@@ -21,7 +21,6 @@ const emit = defineEmits([
   'update:modelValue'
 ])
 
-const inputValue = ref('');
 </script>
 
 <template>
