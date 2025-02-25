@@ -30,6 +30,8 @@ export const useNotesStore = defineStore('notes', () => {
     statusStore.setLoading(true, "Salvando Nota...");
 
     const responseData: Note | ResponseError = await createNote(data);
+    console.log('data: ', data)
+    console.log('responseData: ', responseData)
 
     statusStore.setLoading(false);
 

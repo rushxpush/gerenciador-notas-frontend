@@ -11,7 +11,7 @@ vi.mock('../../api/notesAPI', () => ({
 
 describe('NotestList.vue', () => {
   it('calls fetchNotes on mount', () => {
-    const wrapper = mount(NotesList, {
+    mount(NotesList, {
       global: {
         plugins: [createTestingPinia({ stubActions: false })]
       }
