@@ -2,22 +2,23 @@
 import { ref } from 'vue';
 import Input from './ui/Input.vue';
 import { useNotesStore } from '../stores/notesStore';
+import { useStatusStore } from '../stores/statusStore';
 
-const { postNote } = useNotesStore();
+const notesStore = useNotesStore();
+const statusStore = useStatusStore();
 
 const title = ref('');
 const content = ref('');
 
 const handleCreateNote = async () => {
   if (!title.value) {
-    console.log('required')
+    statusStore.addMessage('O título da nota é obrigatório', 'error');
   }
   else {
-    const responsePostNote = await postNote({
+    await notesStore.postNote({
       title: title.value,
       content: content.value
     })
-    console.log('responsePostNote: ', responsePostNote)
   }
 }
 
