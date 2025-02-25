@@ -1,83 +1,73 @@
 // @vitest-environment happy-dom
-import { describe } from 'vitest';
-// import { describe, it, expect, beforeEach, vi, afterEach } from 'vitest';
-// import { mount } from '@vue/test-utils'
-// import { useNotesStore } from '../../stores/notesStore';
-// import { createTestingPinia } from '@pinia/testing';
-// import NotesList from '../../components/NotesList.vue';
-// import { setActivePinia, createPinia } from 'pinia'
-// import { useStatusStore } from '../../stores/statusStore'
+import { describe, it, expect, beforeEach, vi, afterEach } from 'vitest';
+import { useNotesStore } from '../../stores/notesStore';
+import { setActivePinia, createPinia } from 'pinia'
+import { useStatusStore } from '../../stores/statusStore'
+import type { Note, ResponseError } from "../../types/api";
+import * as notesAPI from '../../api/notesAPI';
 
-// const mockNotes = [{ title: 'Note 1', content: 'Content 1' }]
-// const mockNote = { title: 'New Note', content: 'New Content' }
-// const mockError = { error: true, message: 'Error ao tentar salvar nota' }
-
-// vi.mock('../../api/notesAPI', () => {
-//   return {
-//     getAllNotes: vi.fn(),
-//     createNote: vi.fn()
-//   }
-// })
-
-// import { getAllNotes, createNote } from '../../api/notesAPI';
-
+const mockNotes: Note = {  _id: '1', __v: 0, title: 'Note 1', content: 'Content 1' }
+const mockNote: Note = { _id: '1', __v: 0, title: 'New Note', content: 'New Content' }
+const mockError: ResponseError = { error: 'Something went wrong', message: 'Cannot POST/notes', status: 500 }
 
 describe('notesStore', () => {
-  // beforeEach(() => {
-  //   setActivePinia(createPinia())
-  // })
+  beforeEach(() => {
+    setActivePinia(createPinia())
+  })
 
-  // afterEach(() => {
-  //   vi.clearAllMocks();
-  // })
+  afterEach(() => {
+    vi.clearAllMocks();
+  })
 
-  // it('fetchNotes should call getAllNotes and update state', async () => {
-  //   const notesStore = useNotesStore()
-  //   const statusStore = useStatusStore()
+  it('fetchNotes should call getAllNotes and update state', async () => {
+    const notesStore = useNotesStore()
+    const statusStore = useStatusStore()
 
-  //   vi.spyOn(statusStore, 'setLoading')
-  //   vi.spyOn(statusStore, 'addMessage')
-  //   console.log('---getAllNotes', getAllNotes)
-  //   getAllNotes.mockResolvedValue(mockNote)
+    vi.spyOn(statusStore, 'setLoading')
+    vi.spyOn(statusStore, 'addMessage')
 
-  //   await notesStore.fetchNotes()
+    vi.spyOn(notesAPI, 'getAllNotes').mockResolvedValue(mockNotes);
 
-  //   expect(statusStore.setLoading).toHaveBeenCalledWith(true, 'Carregando notas...')
-  //   expect(statusStore.setLoading).toHaveBeenCalledWith(false)
-  //   expect(statusStore.addMessage).toHaveBeenCalledWith('Notas carregadas com sucesso', 'success')
-  //   expect(notesStore.notes).toEqual(mockNotes)
-  // })
+    await notesStore.fetchNotes()
 
-  // it('postNote should call createNote and update notes on success', async () => {
-  //   const notesStore = useNotesStore()
-  //   const statusStore = useStatusStore()
+    expect(statusStore.setLoading).toHaveBeenCalledWith(true, 'Carregando notas...')
+    expect(statusStore.setLoading).toHaveBeenCalledWith(false)
+    expect(statusStore.addMessage).toHaveBeenCalledWith('Notas carregadas com sucesso', 'success')
+    expect(notesStore.notes).toEqual(mockNotes)
+  })
 
-  //   vi.spyOn(statusStore, 'setLoading')
-  //   vi.spyOn(statusStore, 'addMessage')
+  it('postNote should call createNote and update notes on success', async () => {
+    const notesStore = useNotesStore()
+    const statusStore = useStatusStore()
 
-  //   const response = await notesStore.postNote(mockNote)
-  //   console.log('response: ', response)
-  //   console.log('mockNote: ', mockNote)
+    vi.spyOn(statusStore, 'setLoading')
+    vi.spyOn(statusStore, 'addMessage')
 
-  //   expect(statusStore.setLoading).toHaveBeenCalledWith(true, 'Salvando Nota...')
-  //   expect(statusStore.setLoading).toHaveBeenCalledWith(false)
-  //   expect(statusStore.addMessage).toHaveBeenCalledWith('Nota salva com successo', 'success')
-  //   // expect(notesStore.notes).toContainEqual(mockNote)
-  // })
+    vi.spyOn(notesAPI, 'createNote').mockResolvedValue(mockNote);
 
-  // it('postNote should handle error response', async () => {
-  //   const notesStore = useNotesStore()
-  //   const statusStore = useStatusStore()
+    await notesStore.postNote(mockNote)
 
-  //   vi.spyOn(statusStore, 'setLoading')
-  //   vi.spyOn(statusStore, 'addMessage')
+    expect(statusStore.setLoading).toHaveBeenCalledWith(true, 'Salvando Nota...')
+    expect(statusStore.setLoading).toHaveBeenCalledWith(false)
+    expect(statusStore.addMessage).toHaveBeenCalledWith('Nota salva com successo', 'success')
+    expect(notesStore.notes).toContainEqual(mockNote)
+  })
 
-  //   const response = await notesStore.postNote({ title: 'Invalid Note' })
+  it('postNote should handle error response if backend is unavailable', async () => {
+    const notesStore = useNotesStore()
+    const statusStore = useStatusStore()
 
-  //   expect(statusStore.setLoading).toHaveBeenCalledWith(true, 'Salvando Nota...')
-  //   expect(statusStore.setLoading).toHaveBeenCalledWith(false)
-  //   expect(statusStore.addMessage).toHaveBeenCalledWith('Error ao tentar salvar nota', 'error')
-  //   expect(notesStore.errorNotes).toBe('Error ao tentar salvar nota')
-  //   expect(response).toEqual(mockError)
-  // })
+    vi.spyOn(statusStore, 'setLoading')
+    vi.spyOn(statusStore, 'addMessage')
+
+    vi.spyOn(notesAPI, 'createNote').mockResolvedValue(mockError);
+
+    const response = await notesStore.postNote(mockNote)
+
+    expect(statusStore.setLoading).toHaveBeenCalledWith(true, 'Salvando Nota...')
+    expect(statusStore.setLoading).toHaveBeenCalledWith(false)
+    expect(statusStore.addMessage).toHaveBeenCalledWith('Error ao tentar salvar nota', 'error')
+    expect(notesStore.errorNotes).toBe('Cannot POST/notes')
+    expect(response).toEqual(mockError)
+  })
 })
