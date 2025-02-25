@@ -8,7 +8,6 @@
   <li>Vue</li>
   <li>Axios</li>
   <li>Pinia</li>
-  <li>Oh, Vue Icons!</li>
   <li>Vue Router</li>
 </ul>
 
@@ -16,31 +15,46 @@
 
 ## Funcionalidades
 
-
+<ul>
+  <li>Cadastro de notas</li>
+  <li>Visualização de notas criadas</li>
+  <li>Logger de status de requisições</li>
+  <li>Validador para criação de notas</li>
+</ul>
 
 [Ir para o topo](#gerenciador-de-notas---frontend)
 
 ## Descrição
 
+Frontend do projeto Gerenciador de Notas. Descrição mais detalhada no repositório principal: [Gerenciador de Notas](https://github.com/rushxpush/gerenciador-notas)
 
 [Ir para o topo](#gerenciador-de-notas---frontend)
 
 ## Instalação
 
-1. Faça um clone do repositório:
+1. Faça um clone do repositório central:
+
 ```bash
-git clone git@github.com:rushxpush/gerenciador-notas-frontend.git
-cd gerenciador-notas-frontend 
+git clone git@github.com:rushxpush/gerenciador-notas.git
 ```
 
-2. Monte a imagem e rode:
+2. Entre na pasta criada do repositório central
+```bash
+cd gerenciador-notas
+```
+
+3. Clone os repositórios do frontend e do backend
+```bash
+git clone git@github.com:rushxpush/gerenciador-notas-frontend.git
+git clone git@github.com:rushxpush/gerenciador-notas-backend.git
+```
+
+4. Monte a imagem e rode:
 ```bash
 docker compose up --build
 ```
 
-3. Não esqueça de montar a imagem do backend e rodar. Link: [gerenciador-notas-backend](https://github.com/rushxpush/gerenciador-notas-backend)
-
-4. Acesse a página em [localhost:8085](http://localhost:8085)
+5. Acesse a página em [localhost:8085](http://localhost:8085)
 
 [Ir para o topo](#gerenciador-de-notas---frontend)
 
@@ -56,9 +70,7 @@ Futuros avisos
 
 ![Alt text](Screenshot_2.png)
 
-![Alt text](Screenshot_3.png)
-
-![Alt text](Screenshot_4.png)
+[Ir para o topo](#gerenciador-de-notas---frontend)
 
 ## Suporte
 
@@ -76,14 +88,18 @@ Qualquer dúvida mande um email para [rafagarciadev@gmail.com](mailto:rafagarcia
 - &check; Componente de Visualização de Notas (NotesList.vue)
 - &check; Setup do router (router.ts)
 - &check; API para interação com rota /notes (notesAPI.ts)
-- &check; Composable para encapsulamento das funções de notesAPI (useNotes.ts)
-- &#x2610; Teste unitário CreateNoteForm.vue
-- &#x2610; Teste unitário NotesListView.vue
-- &#x2610; Teste unitário Input.vue
+- &check; Notes Store para encapsulamento das funções de notesAPI (useNotes.ts)
+- &check; Status Store para gerenciamento da exibição de status de requisições (useStatus.ts)
+- &check; Teste unitário CreateNoteForm.spec.ts
+- &check; Teste unitário NotesListView.spec.ts
+- &check; Teste unitário Input.spec.ts
+- &check; Teste unitário Navbar.spec.ts
+- &check; Teste unitário noteStore.spec.ts 
+- &check; Teste unitário statusStore.spec.ts 
 - &#x2610; Teste unitário api/notesAPI.ts
-- &#x2610; Teste unitário  composables/useNotes.ts
-<!-- - &check;  -->
-<!-- - &#x2610;  -->
+- &#x2610; Media queries para tablet e mobile
+
+[Ir para o topo](#gerenciador-de-notas---frontend)
 
 ## Lista de bugs
 
