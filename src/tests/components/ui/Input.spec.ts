@@ -1,10 +1,9 @@
 // @vitest-environment happy-dom
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, expect } from 'vitest';
 import { mount } from '@vue/test-utils'
-import { createPinia, setActivePinia } from 'pinia';
 import Input from '../../../components/ui/Input.vue';
 
-describe('Input component', () => {
+describe('Input.vue', () => {
   const testId = 'test-id';
   const testLabel = 'test-label';
   const initialvalue = 'Initial value';

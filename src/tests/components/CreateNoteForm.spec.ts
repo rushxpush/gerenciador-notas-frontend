@@ -5,7 +5,6 @@ import CreateNoteForm from '../../components/CreateNoteForm.vue';
 import { useNotesStore } from '../../stores/notesStore';
 import { useStatusStore } from '../../stores/statusStore';
 import { createTestingPinia } from '@pinia/testing';
-import { content } from 'happy-dom/lib/PropertySymbol.js';
 
 
 const testTitle = 'test-title';
@@ -16,7 +15,7 @@ vi.mock('../../api/notesAPI', () => ({
   getAllNotes: vi.fn(() => Promise.resolve([]))
 }))
 
-describe('CreateNoteForm component', () => {
+describe('CreateNoteForm.vue', () => {
 
   it('renders inputs fields and button', async () => {
      const wrapper = mount(CreateNoteForm, {
