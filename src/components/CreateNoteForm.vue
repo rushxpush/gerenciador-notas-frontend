@@ -38,7 +38,6 @@ const handleCreateNote = async () => {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  width: 100%;
 }
 
 button {
